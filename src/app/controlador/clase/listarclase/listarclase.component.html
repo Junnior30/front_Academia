@@ -1,0 +1,44 @@
+<div class="container-padre">
+    <div class="titulo-Listar">
+        <p>Clase</p>
+    </div>
+    <div class="container-tabla">
+        <div class="titulo-tabla">
+            <h4>Lista de clases</h4>
+        </div>
+        <div class="tabla-border">
+            <table>
+                <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Curso</th>
+                      <th>Fecha Inicio</th>
+                      <th>Fecha Fin</th>
+                      <th>Estado</th>
+                      <th>Docente</th>
+                      <th>Proyecto</th>
+                      <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let clase of clases">
+                        <td>{{ clase.idCLAS }}</td>
+                        <td>{{ clase.curso.nombre }}</td>
+                        <td>{{ clase.fecha_inicio }}</td>
+                        <td>{{ clase.fecha_fin }}</td>
+                        <td *ngIf="clase.estado == true">Habilitada</td>
+                        <td *ngIf="clase.estado == false">Deshabilitada</td>
+                        <td>{{ clase.empleado.apellido }}</td>
+                        <td>{{ clase.proyecto.nombre }}</td>
+                        <td>
+                          <button type="button" name="editar"
+                          [routerLink]="['../search',clase.idCLAS]"
+                          class="btn btn-primary btn-sm m-2">Editar <i class="fa-solid fa-pen-to-square"></i>
+                          </button>
+                        </td>
+                      </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

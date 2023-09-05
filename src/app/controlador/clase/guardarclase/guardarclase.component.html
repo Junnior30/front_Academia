@@ -1,0 +1,133 @@
+<div class="container-class">
+    <div class="img-caratula">
+        <img src="../../../../assets/img/cami.png" width="520">
+    </div>
+    <section>
+        <h1>Registrar Clase</h1>
+    </section>
+    <div class="form-container">
+        <form [formGroup]="claseForm" (ngSubmit)="onSubmit()">
+            <div class="input-group">
+                <div class="select-proyecto">
+                    <p>seleccionar proyecto: </p>
+                <select
+                formControlName="codigo_proyecto"
+                type="text"
+                name="codigo_proyecto"
+                [(ngModel)]="clases.codigo_proyecto"
+                >
+                    <option selected *ngFor="let p of proyectos" [value]="p.idP">
+                        {{ p.nombre}}
+                    </option>
+                </select>
+                <div class="errors">
+                    <small *ngIf="claseForm.get('codigo_proyecto')?.errors?.['required']">
+                        *El proyecto es requerido.</small>
+                </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="select-curso">
+                    <p>seleccionar curso: </p>
+                <select
+                formControlName="codigo_curso"
+                type="text"
+                name="codigo_curso"
+                [(ngModel)]="clases.codigo_curso"
+                >
+                    <option selected *ngFor="let c of cursos" [value]="c.idCU">
+                        {{ c.nombre}}
+                    </option>
+                </select>
+                <div class="errors">
+                    <small *ngIf="claseForm.get('codigo_curso')?.errors?.['required']">
+                        *El curso es requerido.</small>
+                </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="fecha">
+                    <p>Fecha de Inicio: </p>
+                    <input
+                        type="datetime-local"
+                        formControlName="fecha_inicio"
+                        name="fecha_inicio"
+                        [(ngModel)]="clases.fecha_inicio"
+                        />
+                </div>
+                <div class="errors">
+                  <small *ngIf="claseForm.get('fecha_inicio')?.errors?.['required']">
+                      *La fecha es requerida.</small>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="fecha">
+                    <p>Fecha de Fin: </p>
+                    <input
+                        type="datetime-local"
+                        formControlName="fecha_fin"
+                        name="fecha_fin"
+                        [(ngModel)]="clases.fecha_fin"
+                        />
+                </div>
+                <div class="errors">
+                  <small *ngIf="claseForm.get('fecha_fin')?.errors?.['required']">
+                      *La fecha es requerida.</small>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="select-docente">
+                    <p>seleccionar docente: </p>
+                <select
+                formControlName="codigo_docente"
+                type="text"
+                name="codigo_docente"
+                [(ngModel)]="clases.codigo_docente"
+                >
+                <option selected *ngFor="let d of empleados" [value]="d.idEMP">
+                    {{ d.apellido}}
+                </option>
+                </select>
+                <div class="errors">
+                    <small *ngIf="claseForm.get('fecha_fin')?.errors?.['required']">
+                        *La fecha es requerida.</small>
+                  </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="container-estado">
+                    <p class="title-estado">Estado:</p>
+                    <div class="opciontupla">
+                        <div class="particionprimera">
+                            <p>Habilitado:</p>
+                            <input type="radio"
+                            formControlName="estado"
+                            name="estado" [value]="true"
+                            [(ngModel)]="clases.estado">
+                        </div>
+                        <div class="particionsegunda">
+                            <p>Deshabilitado:</p>
+                            <input type="radio"
+                            formControlName="estado"
+                            name="estado" [value]="false"
+                            [(ngModel)]="clases.estado">
+                        </div>
+                    </div>
+                    <div class="errors">
+                        <small *ngIf="claseForm.get('estado')?.errors?.['required']">
+                            *El estado es requerido.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="tupla-botones">
+                <input  type="submit" value="Guardar" (click)='create()'
+                *ngIf="!clases.idCLAS; else elseBlock">
+                <input  type="submit" value="Salir" routerLink="../../list" (click)='salirUpdate()'>
+                <ng-template #elseBlock>
+                    <input type="submit" value="Editar" (click)='update()'>
+                </ng-template>
+            </div>
+        </form>
+    </div>
+</div>

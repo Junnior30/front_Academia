@@ -1,0 +1,117 @@
+<div class="container-inscripcion">
+  <div class="img-caratula">
+    <img src="../../../../assets/img/Valiente1.png" width="500">
+  </div>
+  <section>
+    <h1>Registrar Inscripción</h1>
+  </section>
+  <div class="form-container">
+    <form [formGroup]="inscripcionForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <div class="select-inscripcion">
+            <p>Seleccionar Alumno</p>
+          <select
+            formControlName="codigo_alumno"
+            type="text"
+            name="codigo_alumno"
+            [(ngModel)]="inscripciones.codigo_alumno"
+          >
+            <option selected *ngFor="let a of alumnos" [value]="a.idA">
+              {{ a.nombre }} {{ a.apellidoPat }}{{ a.apellidoMat }}
+            </option>
+          </select>
+        </div>
+        <div class="errors">
+          <small *ngIf="inscripcionForm.get('codigo_alumno')?.errors?.['required']">
+              *El nombre es requerido.</small>
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="fecha">
+            <p>Fecha: </p>
+            <input
+                type="date"
+                formControlName="fecha"
+                name="fecha"
+                [(ngModel)]="inscripciones.fecha"
+                />
+        </div>
+        <div class="errors">
+          <small *ngIf="inscripcionForm.get('fecha')?.errors?.['required']">
+              *La fecha es requerida.</small>
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="select-project">
+            <p>Seleccionar Proyecto</p>
+                  <select
+                    type="text"
+                    name="codigo_proyecto"
+                    formControlName="codigo_proyecto"
+                    [(ngModel)]="inscripciones.codigo_proyecto"
+                  >
+                    <option
+                      selected
+                      *ngFor="let p of proyectos"
+                      [value]="p.idP"
+                    >
+                      {{ p.nombre }}
+                    </option>
+                  </select>
+        </div>
+        <div class="errors">
+          <small *ngIf="inscripcionForm.get('codigo_proyecto')?.errors?.['required']">
+              *La proyecto es requerida.</small>
+        </div>
+      </div>
+      <div class="input-group">
+        <input  type="text" 
+                name="costo"
+                autocomplete="off"
+                formControlName="costo"
+                placeholder="Costo" 
+                [(ngModel)]="inscripciones.costo">
+        <div class="errors">
+          <small *ngIf="inscripcionForm.get('costo')?.errors?.['required']">
+              *El costo es requerido.</small>
+          <small *ngIf="inscripcionForm.get('costo')?.errors?.['pattern']">
+                          No válido</small>
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="container-estado">
+            <p class="title-estado">Estado:</p>
+            <div class="opciontupla">
+                <div class="particionprimera">
+                    <p>Habilitado:</p>
+                    <input type="radio"
+                    formControlName="estado"
+                    name="estado" [value]="true"
+                    [(ngModel)]="inscripciones.estado">
+                </div>
+                <div class="particionsegunda">
+                    <p>Deshabilitado:</p>
+                    <input type="radio"
+                    formControlName="estado"
+                    name="estado" [value]="false"
+                    [(ngModel)]="inscripciones.estado">
+                </div>
+            </div>
+            <div class="errors">
+                <small *ngIf="inscripcionForm.get('estado')?.errors?.['required']">
+                    *El estado es requerido.
+                </small>
+            </div>
+        </div>
+    </div>
+      <div class="tupla-botones">
+        <input  type="submit" value="Guardar" (click)='create()'
+        *ngIf="!inscripciones.idI; else elseBlock">
+        <input  type="submit" value="Salir" routerLink="../../list" (click)='salirUpdate()'>
+        <ng-template #elseBlock>
+            <input type="submit" value="Editar" (click)='update()'>
+        </ng-template>
+    </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+.container-padre{
+    width: 100%;
+    
+
+    .titulo-Listar{
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 40px;
+        margin: 25px 0px;
+    }
+}
+.container-tabla{
+    border: rgb(228, 228, 228) solid;
+    border-width: 1px;
+    //padding: 15px;
+    .titulo-tabla{
+        background-color: #f8f9fc;
+        padding: 15px 25px;
+        color: #263238
+    }
+    .tabla-border{
+        padding: 25px;
+        background-color: white;
+    }
+    table{
+        border-collapse: collapse;
+        width: 100%;
+        tr,th{
+            font-family: 'Poppins', sans-serif;
+            text-align: left;
+            color: #858796;
+            background: #fffffff3;
+            border: rgb(228, 228, 228) solid;
+            border-width: 1px;
+            padding: 10px;
+
+            td{
+                border: rgb(228, 228, 228) solid;
+                border-width: 1px;
+                font-family: 'Poppins', sans-serif;
+                padding: 10px;
+            }
+        }
+    }
+
+}
+

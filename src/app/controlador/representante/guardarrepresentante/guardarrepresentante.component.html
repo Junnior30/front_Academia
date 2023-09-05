@@ -1,0 +1,126 @@
+<div class="container-representante">
+    <div class="img-caratula">
+        <img src="../../../../assets/img/Valiente1.png" width="500">
+    </div>
+    <section>
+        <h1>Registrar Represesentante</h1>
+    </section>
+    <div class="form-container">
+        <form [formGroup]="representanteForm" (ngSubmit)="onSubmit()">
+            <div class="form-Uno">
+                <div class="input-group">
+                    <input  type="text"
+                            placeholder="Nombres"
+                            autocomplete="off"
+                            [(ngModel)]="representantes.nombres"
+                            formControlName="nombres"
+                            name="nombres"
+                    >
+                    <div class="errors">
+                        <small *ngIf="representanteForm.get('nombres')?.errors?.['required']">
+                            *El nombre es requerido.</small>
+                        <small *ngIf="representanteForm.get('nombres')?.errors?.['minlength']">
+                                Máximo 3 letras por favor..</small>
+                        <small *ngIf="representanteForm.get('nombres')?.errors?.['maxlength']">
+                                    Mínimo 20 letras por favor..</small>
+                        <small *ngIf="representanteForm.get('nombres')?.errors?.['pattern']">
+                                        Solo letras por favor</small>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input  type="text"
+                            placeholder="Apellidos"
+                            autocomplete="off"
+                            [(ngModel)]="representantes.apellidos"
+                            formControlName="apellidos"
+                            name="apellidos"
+                    >
+                    <div class="errors">
+                        <small *ngIf="representanteForm.get('apellidos')?.errors?.['required']">
+                            *El apellido es requerido.</small>
+                        <small *ngIf="representanteForm.get('apellidos')?.errors?.['minlength']">
+                                Máximo 3 letras por favor..</small>
+                        <small *ngIf="representanteForm.get('apellidos')?.errors?.['maxlength']">
+                                    Mínimo 20 letras por favor..</small>
+                        <small *ngIf="representanteForm.get('apellidos')?.errors?.['pattern']">
+                                        Solo letras por favor</small>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input  type="text"
+                            placeholder="Identificación"
+                            autocomplete="off"
+                            [(ngModel)]="representantes.identificacion"
+                            formControlName="identificacion"
+                            name="identificacion"
+                    >
+                    <div class="errors">
+                        <small *ngIf="representanteForm.get('identificacion')?.errors?.['required']">
+                            *La identificación es requerido.</small>
+                        <small *ngIf="representanteForm.get('identificacion')?.errors?.['pattern']">
+                                        No válido</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-Dos">
+                <div class="input-group">
+                    <input  type="text"
+                            placeholder="Telefono"
+                            autocomplete="off"
+                            [(ngModel)]="representantes.telefono"
+                            formControlName="telefono"
+                            name="telefono"
+                    >
+                    <div class="errors">
+                        <small *ngIf="representanteForm.get('telefono')?.errors?.['required']">
+                            *El teléfono es requerido.</small>
+                        <small *ngIf="representanteForm.get('telefono')?.errors?.['pattern']">
+                                        No válido</small>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input  type="text"
+                            placeholder="Dirección"
+                            autocomplete="off"
+                            [(ngModel)]="representantes.direccion"
+                            formControlName="direccion"
+                            name="direccion"
+                    >
+                    <div class="errors">
+                        <small *ngIf="representanteForm.get('direccion')?.errors?.['required']">
+                            *La dirección es requerido.</small>
+                        <small *ngIf="representanteForm.get('direccion')?.errors?.['maxlength']">
+                                    Máximo 20 letras por favor..</small>
+                        <small *ngIf="representanteForm.get('direccion')?.errors?.['pattern']">
+                                        no válido</small>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input  type="text"
+                            placeholder="Correo"
+                            autocomplete="off"
+                            [(ngModel)]="representantes.correo"
+                            formControlName="correo"
+                            name="correo"
+                    >
+                    <div class="errors">
+                        <small *ngIf="representanteForm.get('correo')?.errors?.['required']">
+                            *El correo es requerido.</small>
+                        <small *ngIf="representanteForm.get('correo')?.errors?.['pattern']">
+                                        No válido</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tupla-botones">
+                <input  type="submit" value="Guardar" (click)='create()'
+                *ngIf="!representantes.idR; else elseBlock">
+                <ng-template #elseBlock>
+                    <input type="submit" value="Editar" (click)='update()'>
+                </ng-template>
+                <input  type="submit" value="Salir" routerLink="../list" (click)='salirUpdate()'>
+            </div>
+        </form>
+    </div>
+
+</div>

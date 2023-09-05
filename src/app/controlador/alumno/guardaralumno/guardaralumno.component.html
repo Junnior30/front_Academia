@@ -1,0 +1,178 @@
+
+<div class="main-container">
+    <div class="img-caratula">
+        <img src="../../../../assets/img/Valiente1.png" width="500">
+    </div>
+    <section>
+        <h1>Registrar Alumno</h1>
+    </section>
+    <div class="form-container">
+        <form [formGroup]="alumnoForm" (ngSubmit)="onSubmit()">
+                <div class="form-Uno">
+                    <div class="input-group">
+                        <input type="text" id="firstNameInput" placeholder="Nombre completo" autocomplete="off" [(ngModel)]="alumnos.nombre" formControlName="nombre" name="nombre">
+                        <div class="errors">
+                            <small *ngIf="alumnoForm.get('nombre')?.errors?.['required']">
+                                *El nombre es requerido.</small>
+                            <small *ngIf="alumnoForm.get('nombre')?.errors?.['minlength']">
+                                    Máximo 3 letras por favor..</small>
+                            <small *ngIf="alumnoForm.get('nombre')?.errors?.['maxlength']">
+                                        Mínimo 20 letras por favor..</small>
+                            <small *ngIf="alumnoForm.get('nombre')?.errors?.['pattern']">
+                                            Solo letras por favor</small>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <input id="firstlastNameInput" type="text" placeholder="Apellido Paterno" autocomplete="off" [(ngModel)]="alumnos.apellidoPat" formControlName="apellidoPat" name="apellidoPat">
+                        <div class="errors">
+                            <small *ngIf="alumnoForm.get('apellidoPat')?.errors?.['required']">
+                                *El apellido es requerido.</small>
+                            <small *ngIf="alumnoForm.get('apellidoPat')?.errors?.['minlength']">
+                                    Máximo 3 letras por favor..</small>
+                            <small *ngIf="alumnoForm.get('apellidoPat')?.errors?.['maxlength']">
+                                        Mínimo 20 letras por favor..</small>
+                            <small *ngIf="alumnoForm.get('apellidoPat')?.errors?.['pattern']">
+                                            Solo letras por favor</small>
+                        </div>
+                    </div>
+                    <div class="input-group" >
+                        <input  id="secondlastNameInput" type="text" placeholder="Apellido Materno" autocomplete="off" [(ngModel)]="alumnos.apellidoMat" formControlName="apellidoMat" name="apellidoMat">
+                        <div class="errors">
+                            <small *ngIf="alumnoForm.get('apellidoMat')?.errors?.['required']">
+                                *El apellido es requerido.</small>
+                            <small *ngIf="alumnoForm.get('apellidoMat')?.errors?.['minlength']">
+                                    Máximo 3 letras por favor..</small>
+                            <small *ngIf="alumnoForm.get('apellidoMat')?.errors?.['maxlength']">
+                                        Mínimo 20 letras por favor..</small>
+                            <small *ngIf="alumnoForm.get('apellidoMat')?.errors?.['pattern']">
+                                            Solo letras por favor</small>
+                        </div>
+                    </div>
+                    <div class="input-group" >
+                        <div class="fecha">
+                            <p>Fecha de nacimiento: </p>
+                            <input  type="date"
+                                    min="2000-01-01"
+                                    max="2022-01-01"
+                                    id="DateofBirth"
+                                    [(ngModel)]="alumnos.fechaN"
+                                    formControlName="fechaN"
+                            name="fechaN">
+                            <div class="errors">
+                                <small *ngIf="alumnoForm.get('fechaN')?.errors?.['required']">
+                                    *La Fecha es requerida.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="container-genero">
+                            <p class="title-genero">Genero:</p>
+                            <div class="opciontupla">
+                                <div class="particionprimera">
+                                    <p>Masculino:</p>
+                                    <input type="radio"
+                                    formControlName="genero"
+                                    name="genero" [value]="true"
+                                    [(ngModel)]="alumnos.genero">
+                                </div>
+                                <div class="particionsegunda">
+                                    <p>Femenino:</p>
+                                    <input type="radio"
+                                    formControlName="genero"
+                                    name="genero" [value]="false"
+                                    [(ngModel)]="alumnos.genero">
+                                </div>
+                            </div>
+                            <div class="errors">
+                                <small *ngIf="alumnoForm.get('genero')?.errors?.['required']">
+                                    *El genero es requerido.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            <div class="form-Dos">
+                <div class="input-group" >
+                    <input  id="identifyInput"
+                            type="text"
+                            placeholder="DNI"
+                            [(ngModel)]="alumnos.identificacion"
+                            formControlName="identificacion"
+                            autocomplete="off"
+                            name="identificacion">
+                    <div class="errors">
+                        <small *ngIf="alumnoForm.get('identificacion')?.errors?.['required']">
+                            *La identificación es requerida.</small>
+                        <small *ngIf="alumnoForm.get('identificacion')?.errors?.['pattern']">
+                            Ingrese identificación valida por favor ...</small>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input  id="collegeInput"
+                            type="text"
+                            placeholder="Colegio"
+                            [(ngModel)]="alumnos.colegio"
+                            formControlName="colegio"
+                            name="colegio"
+                            autocomplete="off"
+                            >
+                    <div class="errors">
+                        <small *ngIf="alumnoForm.get('colegio')?.errors?.['required']">
+                                *El colegio es requerido.</small>
+                        <small *ngIf="alumnoForm.get('colegio')?.errors?.['minlength']">
+                                Máximo 3 letras por favor..</small>
+                        <small *ngIf="alumnoForm.get('colegio')?.errors?.['maxlength']">
+                                Mínimo 20 letras por favor..</small>
+                        <small *ngIf="alumnoForm.get('colegio')?.errors?.['pattern']">
+                                Solo letras por favor</small>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="selectDistrito">
+                        <p>Seleccione distrito:</p>
+                        <select
+                        formControlName="codigo_distrito" name="codigo_distrito" type="text" [(ngModel)]="alumnos.codigo_distrito" name="codigo_distrito"
+                        formControlName="codigo_distrito" >
+                            <option selected *ngFor="let d of distritos" [value]="d.idD">
+                                {{d.nombre}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="errors" >
+                        <small *ngIf="alumnoForm.get('codigo_distrito')?.errors?.['required']">
+                            *El distrito es requerido.
+                        </small>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="selectRepresentante">
+                        <p>Seleccione representante:</p>
+                        <select name="codigo_representante"
+                        formControlName="codigo_representante"
+                        type="text" [(ngModel)]="alumnos.codigo_representante">
+                            <option [value]="representante.idR" *ngFor="let representante of representantes">
+                                {{representante.nombres}}
+                                {{representante.apellidos}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="errors">
+                        <small *ngIf="alumnoForm.get('codigo_representante')?.errors?.['required']">
+                            *El representante es requerido.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="tupla-botones">
+                <input id="button" type="submit" value="Crear Alumno" (click)='create()'
+                *ngIf="!alumnos.idA else elseBlock">
+                <ng-template #elseBlock>
+                    <input type="submit" value="Editar" (click)='update()'>
+                </ng-template>
+                <input  type="submit" value="Salir" routerLink="../list" (click)='salirUpdate()'>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container-padre">
+    <div class="titulo-Listar">
+        <p>Proyecto</p>
+    </div>
+    <div class="container-tabla">
+        <div class="titulo-tabla">
+            <h4>Lista de proyectos</h4>
+        </div>
+        <div class="tabla-border">
+            <table>
+                <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Nombres</th>
+                      <th>Descripción</th>
+                      <th>Estado</th>
+                      <th>Inversión</th>
+                      <th>Costo</th>
+                      <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let proyecto of proyectos">
+                        <td>{{ proyecto.idP }}</td>
+                        <td>{{ proyecto.nombre }}</td>
+                        <td>{{ proyecto.descripcion }}</td>
+                        <td *ngIf="proyecto.estado == true">Habilitado</td>
+                        <td *ngIf="proyecto.estado == false">Deshabilitado</td>
+                        <td>{{ proyecto.inversion }}</td>
+                        <td>{{ proyecto.costo }}</td>
+                        <td>
+                          <button type="button" name="editar"
+                          [routerLink]="['../search',proyecto.idP]"
+                          class="btn btn-primary btn-sm m-2">Editar <i class="fa-solid fa-pen-to-square"></i>
+                          </button>
+                        </td>
+                      </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

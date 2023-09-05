@@ -1,0 +1,41 @@
+<div class="container-padre">
+    <div class="titulo-Listar">
+        <p>Inscripción</p>
+    </div>
+    <div class="container-tabla">
+        <div class="titulo-tabla">
+            <h4>Lista de inscripciones</h4>
+        </div>
+        <div class="tabla-border">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Proyecto</th>
+                        <th>Estado</th>
+                        <th>Fecha</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let inscripcion of inscripciones">
+                        <td>{{inscripcion.idI}}</td>
+                        <td>{{inscripcion.alumno.nombre}} {{inscripcion.alumno.apellidoPat}}{{inscripcion.alumno.apellidoMat}}</td>
+                        <td>{{inscripcion.proyecto.nombre}}</td>
+                        <td *ngIf="inscripcion.estado == false">Deshabilitado</td>
+                        <td *ngIf="inscripcion.estado == true">Habilitado</td>
+                        <td>{{inscripcion.fecha| date:'yyyy/MM/dd'}}</td>
+                        <td>
+                            <button type="button" name="editar"
+                            [routerLink]="['../search',inscripcion.idI]"
+                            class="btn btn-primary btn-sm m-2">Editar <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                          </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

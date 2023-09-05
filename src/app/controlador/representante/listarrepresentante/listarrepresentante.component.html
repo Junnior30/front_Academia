@@ -1,0 +1,45 @@
+<div class="container-padre">
+    <div class="titulo-Listar">
+        <p>Representante</p>
+    </div>
+    <div class="container-tabla">
+        <div class="titulo-tabla">
+            <h4>Lista de representantes</h4>
+        </div>
+        <div class="tabla-border">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombres Completos</th>
+                        <th>Identificación</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let representante of representantes">
+                        <td>{{representante.idR}}</td>
+                        <td>{{representante.nombres}} {{representante.apellidos}}</td>
+                        <td>{{representante.identificacion}}</td>
+                        <td>{{representante.telefono}}</td>
+                        <td>{{representante.direccion }}</td>
+                        <td>{{representante.correo }}</td>
+                        <td>
+                            <button type="button" name="editar"
+                            [routerLink]="['../search/',representante.idR]"
+                            class="btn btn-primary btn-sm m-2">Editar <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <button type="button" name="eliminar" (click)='delete(representante)'
+                            class="btn btn-danger btn-sm">Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

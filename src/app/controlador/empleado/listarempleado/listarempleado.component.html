@@ -1,0 +1,43 @@
+<div class="container-padre">
+    <div class="titulo-Listar">
+        <p>Empleado</p>
+    </div>
+    <div class="container-tabla">
+        <div class="titulo-tabla">
+            <h4>Lista de empleados</h4>
+        </div>
+        <div class="tabla-border">
+            <table>
+                <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Nombres</th>
+                      <th>apellido</th>
+                      <th>Identificacion/th>
+                      <th>Telefono</th>
+                      <th>Correo</th>
+                      <th>Cargo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let empleado of empleados">
+                        <td>{{ empleado.idEMP }}</td>
+                        <td>{{ empleado.nombre }}</td>
+                        <td>{{ empleado.apellido }}</td>
+                        <td>{{ empleado.identificacion }}</td>
+                        <td>{{ empleado.telefono }}</td>
+                        <td>{{ empleado.correo }}</td>
+                        <td>{{ empleado.cargo.nombre}}</td> 
+                        <td>
+                          <button type="button" name="editar"
+                          [routerLink]="['../search',empleado.idEMP]"
+                          class="btn btn-primary btn-sm m-2">Editar <i class="fa-solid fa-pen-to-square"></i>
+                          </button>
+                        </td>
+                      </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

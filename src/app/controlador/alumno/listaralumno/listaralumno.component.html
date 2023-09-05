@@ -1,0 +1,45 @@
+<div class="container-padre">
+    <div class="titulo-Listar">
+        <p>Alumno</p>
+    </div>
+    <div class="container-tabla">
+        <div class="titulo-tabla">
+            <h4>Lista de alumno</h4>
+        </div>
+        <div class="tabla-border">
+            <table>
+                <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Nombres</th>
+                      <th>Genero</th>
+                      <th>Colegio</th>
+                      <th>Distrito</th>
+                      <th>Representante DNI</th>
+                      <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let alumno of alumnos">
+                        <td>{{ alumno.idA }}</td>
+                        <td>{{ alumno.nombre }}
+                            {{ alumno.apellidoPat}}
+                            {{ alumno.apellidoMat }}
+                        </td>
+                        <td *ngIf="alumno.genero == true">M</td>
+                        <td *ngIf="alumno.genero == false">F</td>
+                        <td>{{ alumno.colegio }}</td>
+                        <td>{{ alumno.distrito.nombre }}</td>
+                        <td>{{ alumno.representante.identificacion }}</td>
+                        <td>
+                          <button type="button" name="editar"
+                          [routerLink]="['../search',alumno.idA]"
+                          class="btn btn-primary btn-sm m-2">Editar <i class="fa-solid fa-pen-to-square"></i>
+                          </button>
+                        </td>
+                      </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
